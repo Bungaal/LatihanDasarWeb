@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pendaftaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url(images/latar2.jpeg);
+            background-size: cover;
+        }
+        .container {
+            max-width: 700px; 
+            margin: 0 auto;
+            background-color: #c2d4d6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #000000;
+            text-align: left;
+        }
+        th {
+            background-color: #6cbad1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Data Pendaftaran</h1>
+        <table border="3">
+            <thead>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Agama</th>
+                    <th>Jurusan</th>
+                    <th>No Whatsapp</th>
+                </tr>
+            </thead>
+       
+         <tbody>
+            <tr>
+                <td id="nama"></td>
+                <td id="tempat_lahir"></td>
+                <td id="tanggal_lahir"></td>
+                <td id="jenis_kelamin"></td>
+                <td id="agama"></td>
+                <td id="jurusan"></td>
+                <td id="no_wa"></td>
+            </tr>
+         </tbody>
+        </table>
+        
+       
+        <div class="button-container">
+            <button class="btn-back" onclick="window.location.href='index.html'">Kembali Ke Halaman 1</button> 
+        </div> 
+
+         <script>
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('nama').innerText = params.get('nama');
+            document.getElementById('tempat_lahir').innerText = params.get('tempat_lahir');
+            document.getElementById('tanggal_lahir').innerText = params.get('tanggal_lahir');
+            document.getElementById('jenis_kelamin').innerText = params.get('jenis_kelamin');
+            document.getElementById('agama').innerText = params.get('agama');
+
+            const jurusanArray = [];
+            if (params.getAll('jurusan')) {
+                params.getAll('jurusan').forEach(jurusan => jurusanArray.push(jurusan));
+            }
+            document.getElementById('jurusan').innerText = jurusanArray.join('jurusan ');
+            document.getElementById('no_wa').innerText = params.get('no_wa');
+         </script>
+    </div>
+
+</body>
+</html>
